@@ -26,6 +26,9 @@ def index():
             today = date.today()
         print(option)
         g.write(str(option)+"\n")
+        text = request.form['descriere']
+        g.write(text+"\n")
+        g.write("\n")
     return render_template("index.html", members = members)
 
 
