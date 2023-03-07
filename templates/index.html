@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Sistem Prezenta Robosap</title>
+    </head>
+
+    <body>
+        <h1>Prezență Robosap</h1>
+        <form name="form" action="/" method="POST" onsubmit="">
+        <p>
+        {%for item in members%}
+            <input type="radio" name="options" id={{item}} value={{item}}> {{item}} <br>    
+        {%endfor%}
+        </p>
+        <p><input type=submit></p>
+        </form>
+    </body>
+</html>
