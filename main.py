@@ -4,15 +4,14 @@ from datetime import date
 app = Flask(__name__)
 today = date.today()
 
-
 members = []
 checker = {}
 
 f = open("members.txt", "r")
-
 for line in f:
     members.append(line)
-    checker[str(line[:-1])] = 1
+    line = line[:-1] if line[-1] == '\n' else line
+    checker[str(line)] = 1
 
 print(checker)
 
@@ -28,11 +27,8 @@ def index():
             g.write(request.form['descriere']+"\n\n")
             g.close()
             checker[str(request.form['options'])] == 0
-        # return render_template("succes.html")
     return render_template("index.html", members = members)
 
 
-
-
 if __name__ == "__main__":
-    app.run()
+    app.run(port = 80, host = '0.0.0.0')
