@@ -2,10 +2,10 @@ from flask import Flask, render_template, request
 from datetime import date
 import csv
 
-#problema: nu se reseteaza checkerul de nume dupa ce se termina ziua
+#problema: nu se reseteaza checkerul de nume dupa ce se termina ziua DONE
 
 #intra pe pagina verifica ziua, daca s-a terminat se reseteaza checkerul si se insereaza data in fisier
-#dupa se pun in fisier optiunile alese/scrise
+#dupa se pun in fisier optiunile alese/scrise SPER CA MERGE
 
 app = Flask(__name__)
 today = date.today()
@@ -33,10 +33,10 @@ def index():
         
         selected_name = str(request.form['options'])
 
-        # if today != date.today():
-        #     date = {'day':date.day, 'month':date.month, 'year':date.year}
-        #     csv_writer.writerow(date)
-        #     today = date.today()
+        if today != date.today():
+            for key in checker:
+                checker[key] = 1
+            today = date.today()
             
         csv_file = open(str(date.today()) + ".csv", 'a')
         csv_writer = csv.writer(csv_file, delimiter=',')
